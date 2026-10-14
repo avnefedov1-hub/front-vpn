@@ -22,7 +22,7 @@ function press(el){if(el._pr)return;el._pr=1;const o={s:{s:sp(1)}};o.apply=()=>e
 function mag(el){if(el._mg)return;el._mg=1;const o={s:{tx:sp(),ty:sp()}};o.apply=()=>{el.style.setProperty('--tx',o.s.tx.x.toFixed(2)+'px');el.style.setProperty('--ty',o.s.ty.x.toFixed(2)+'px')};
  el.addEventListener('pointermove',e=>{if(e.pointerType!=='mouse')return;const [x,y]=rel(el,e);o.s.tx.t=(x-.5)*16;o.s.ty.t=(y-.5)*10;wake(o)},{passive:true});
  el.addEventListener('pointerleave',()=>{o.s.tx.t=o.s.ty.t=0;wake(o)},{passive:true})}
-const bind=(root=document)=>{if(RM)return;root.querySelectorAll('.tac').forEach(t=>tilt(t,4));root.querySelectorAll('.btn').forEach(press);root.querySelectorAll('.mag').forEach(mag)};
+const bind=(root=document)=>{if(RM)return;root.querySelectorAll('.tac').forEach(t=>tilt(t,0));root.querySelectorAll('.btn').forEach(press);root.querySelectorAll('.mag').forEach(mag)};
 window.Tac={bind};bind();
 // hero live moment: the headline surface leans toward the pointer with a sheen (poster = static headline)
 const h=document.querySelector('.surf');if(h&&!RM)tilt(h,3,h.querySelector('.surf-in'));

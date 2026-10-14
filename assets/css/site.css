@@ -437,3 +437,105 @@ body:has(.cta-sec) .ftr{padding-top:calc(120px + clamp(40px,5vw,64px))}
 .ms.tac::after{display:none}
 .lostw .wd{display:inline-flex;white-space:nowrap;font-weight:inherit}
 .lostw .wd span{display:inline-block;transition:transform .6s cubic-bezier(.32,.72,0,1),color .3s}
+
+/* ===== v5 polish: no overlaps, calmer, consistent rhythm ===== */
+:root{--s1:8px;--s2:16px;--s3:24px;--s4:32px;--s5:48px;--s6:64px;--s7:96px}
+/* type scale */
+.sec-h{font-size:clamp(32px,4.4vw,56px);line-height:1.08;margin-bottom:var(--s2)}
+.sec-h+.sec-d,.faq .sec-h+.sec-d{margin:0 0 var(--s5);font-size:clamp(16px,1.3vw,18px)}
+section{padding:clamp(64px,9vw,112px) 0}
+.ms h3,.app h3{font-size:clamp(20px,1.9vw,24px);line-height:1.25}
+.app.big h3{font-size:clamp(26px,3vw,36px)}
+/* tactile: spotlight + press only (no rotation → no blurry text) */
+.tac{transform:scale(var(--s))}
+.ms{transform:none}
+/* steps timeline: line joins dot centres, dots sit above it, nothing crosses text */
+.tl-wrap{--dot:40px}
+.tl{gap:var(--s4)}
+.ms{padding:calc(var(--dot) + var(--s3)) 0 0;overflow:visible}
+.ms-dot{left:0;top:0;width:var(--dot);height:var(--dot);display:grid;place-items:center;font:700 16px/1 var(--font-sans);color:var(--primary);background:#fff;border:2px solid var(--primary);box-shadow:none;z-index:1}
+.ms:first-child .ms-dot{background:var(--primary);color:#fff}
+.ms h3{margin-bottom:var(--s1)}
+.tl-line{left:calc(var(--dot)/2);top:calc(var(--dot)/2 - 1px);height:2px;width:calc((100% - 2*var(--s4))/3*2 + 2*var(--s4));z-index:0}
+.tl-line path{stroke-width:2}
+@media(max-width:860px){.tl{grid-template-columns:1fr;gap:var(--s4);padding-left:0}
+ .ms{padding:0 0 0 calc(var(--dot) + var(--s2));min-height:var(--dot)}
+ .ms-dot{left:0;top:0}
+ .tl-line{display:block;left:calc(var(--dot)/2 - 1px);top:calc(var(--dot)/2);width:2px;height:calc(100% - var(--dot) - 48px)}
+ .tl-vline{display:none}}
+/* app cards: decoration confined to top-right, text never under it */
+.apps{gap:var(--s2)}
+.app{padding:var(--s4) var(--s3) var(--s3);gap:var(--s2)}
+.app .ic{top:var(--s3);left:var(--s3)}
+.app-topo{width:46%;height:46%;right:0;top:0;opacity:.22}
+.app-t{padding-right:64px}
+.app .go{right:var(--s3);bottom:var(--s3)}
+.app{padding-top:calc(var(--s3) + 52px + var(--s3))}
+/* FAQ */
+.faq-side{position:static}
+@media(min-width:861px){.faq-side{position:sticky;top:100px}}
+/* CTA: own section, no overlap with footer */
+.cta-sec{margin-bottom:0;padding:0 0 clamp(64px,9vw,112px)}
+body:has(.cta-sec) .ftr{padding-top:clamp(48px,7vw,88px)}
+.cta{border-radius:var(--radius);box-shadow:0 20px 50px -30px rgba(20,127,114,.35)}
+.bm{filter:none;transform:translateY(16px)}
+/* footer: no wordmark, compact bottom row */
+.wordmark{display:none}
+.ftr-bot{display:flex;flex-wrap:wrap;justify-content:space-between;gap:var(--s1) var(--s3);margin-top:var(--s5);padding-top:var(--s3);border-top:1px solid rgba(255,255,255,.12);color:#8fa09d;font-size:14px}
+/* pages: breathing room above footer */
+.dash,.guide{padding-bottom:clamp(64px,9vw,112px)}
+.dash-help{margin-bottom:0}
+.lost{padding-bottom:clamp(64px,9vw,112px)}
+/* inline text links: comfortable hit area */
+.crumbs a,.gate-alt a,.md a{display:inline-block;padding:4px 0}
+.crumbs{gap:var(--s1) var(--s2)}
+/* cards/radius consistency */
+.slot,.gsteps li,.aside,.g-next a,.near ul,.qd-in,.gate-card,.callout,.tbl,.input{border-radius:var(--radius)}
+.btn,.menu-btn,.deep .btn,.acts .btn{border-radius:var(--radius)}
+.slot-h .n,.ms-dot,.gsteps li::before,.qa summary i{border-radius:50%}
+/* connector segments between dots (replace svg line) */
+.tl-line{display:none!important}
+.ms:not(:last-child)::after{content:"";position:absolute;left:calc(var(--dot) + 8px);right:calc(-1*var(--s4) + 8px);top:calc(var(--dot)/2 - 1px);height:2px;background:var(--primary);transform-origin:left;transform:scaleX(var(--d,1));opacity:.85}
+@media(max-width:860px){.ms:not(:last-child)::after{left:calc(var(--dot)/2 - 1px);right:auto;width:2px;height:auto;top:calc(var(--dot) + 8px);bottom:calc(-1*var(--s4) + 8px);transform-origin:top;transform:scaleY(var(--d,1))}}
+
+/* footer wordmark: fits, fully visible, padding + safe-area below via .ftr */
+.ftr-wm{margin:var(--s5) 0 0;font:800 clamp(48px,13.5vw,196px)/1.12 var(--font-heading);letter-spacing:-.04em;color:var(--primary);white-space:nowrap;max-width:100%;padding-bottom:.06em}
+
+/* UGSE mark (based on Uralgeology favicon): header, glyphs, preloader */
+.brand img{width:24px;height:31px}
+.gate-card .glyph{width:44px;height:56px;color:var(--primary)}
+.gate-card .glyph circle,.num .o circle{transition:fill .3s}
+.gate-card.ok .glyph{transform:none}.gate-card.ok .glyph circle{transform:none;fill:#fff;stroke:#1aa392;stroke-width:2}
+.num .o{width:.62em;height:.8em;color:var(--primary)}
+.num:hover .o circle{transform:none;fill:var(--primary)}
+.pl svg{width:72px;height:94px;color:var(--primary);overflow:visible}
+.pl svg g path{opacity:0;transform:translateY(-14px);animation:drop .45s cubic-bezier(.22,.61,.36,1) forwards}
+.pl svg .p1{animation-delay:.25s}.pl svg .p2{animation-delay:.4s}.pl svg .p3{animation-delay:.55s}.pl svg .p4{animation-delay:.7s}.pl svg .p5{animation-delay:.85s}
+.pl svg .lt{opacity:0;animation:glow .5s ease 1.2s forwards}
+@keyframes drop{to{opacity:1;transform:none}}@keyframes glow{0%{opacity:0}60%{opacity:1;r:5}100%{opacity:1;r:3.2}}
+.pl.quick svg g path,.pl.quick svg .lt{animation-duration:.25s;animation-delay:0s}
+/* slots grid: even rows, odd remainder centred */
+.grid{display:flex;flex-wrap:wrap;justify-content:center;gap:var(--s2)}
+.grid>.slot{flex:0 1 100%;min-width:0}
+@media(min-width:600px){.grid>.slot{flex-basis:calc((100% - var(--s2))/2)}}
+@media(min-width:900px){.grid>.slot{flex-basis:calc((100% - 2*var(--s2))/3)}}
+@media(min-width:1180px){.grid>.slot{flex-basis:calc((100% - 4*var(--s2))/5)}.slot .acts .btn{font-size:13px}.deep .btn{font-size:12.5px;padding:0 4px}}
+/* toast fully gone when idle (no stray pill) */
+.toast{visibility:hidden}
+.toast.on{visibility:visible}
+.toast:empty{display:none}
+.num{font-size:16px}.num .o{flex:none;width:clamp(64px,12vw,112px);height:auto;margin:0}
+/* vertical rhythm */
+section{padding:clamp(64px,8.4vw,120px) 0}
+.hero{padding-top:clamp(104px,14vh,150px)}
+main:not(:has(.cta-sec)){padding-bottom:clamp(56px,7vw,104px)}
+.dash,.guide,.lost{padding-bottom:0}
+main.lost,main.gate{padding-bottom:clamp(56px,7vw,104px)}
+.g-grid{margin-top:clamp(32px,4vw,56px)}
+.g-next{margin-top:clamp(48px,6vw,80px)}
+.g-body{gap:clamp(40px,4vw,56px)}
+.aside{position:static}
+@media(min-width:861px){.aside{position:sticky;top:96px}}
+.dash-help{margin-top:clamp(40px,5vw,64px)}
+.cta-sec{padding:0 0 clamp(64px,8.4vw,120px)}
+section.md{padding:0}.md h2{margin-top:0}

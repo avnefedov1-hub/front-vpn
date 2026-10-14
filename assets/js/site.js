@@ -30,7 +30,7 @@ else{pl&&pl.remove();startReveals()}
 
 // scroll-draw: [data-draw] gets --d 0→1 while crossing the viewport; milestone numbers drift (parallax ≤12%)
 const dr=$$('[data-draw]'),ms=$$('.ms-n');
-if(dr.length||ms.length){let q=0;const f=()=>{q=0;const h=innerHeight;dr.forEach(el=>{const r=el.getBoundingClientRect();const v=RM?1:Math.min(1,Math.max(0,(h*.9-r.top)/(h*.6+r.height*.5)));el.style.setProperty('--d',v.toFixed(3))});
+if(dr.length||ms.length){let q=0;const f=()=>{q=0;const h=innerHeight;dr.forEach(el=>{const r=el.getBoundingClientRect();const v=RM?1:Math.min(1,Math.max(0,(h*.85-r.top)/(h*.35)));el.style.setProperty('--d',v.toFixed(3))});
  if(!RM)ms.forEach(n=>{const r=n.parentElement.getBoundingClientRect();n.style.setProperty('--py',((r.top+r.height/2-h/2)*-.1).toFixed(1)+'px')})};addEventListener('scroll',()=>{if(!q)q=requestAnimationFrame(f)},{passive:true});addEventListener('resize',f);f()}
 // 404 word: random scatter, settles; click to scatter again
 const lw=$('.lostw');if(lw){const sc=()=>lw.querySelectorAll('span').forEach(s=>{s.style.setProperty('--x',(Math.random()*80-40).toFixed(0)+'px');s.style.setProperty('--y',(Math.random()*90-45).toFixed(0)+'px');s.style.setProperty('--r',(Math.random()*40-20).toFixed(0)+'deg')});sc();
