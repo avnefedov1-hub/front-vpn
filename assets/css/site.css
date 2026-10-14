@@ -298,3 +298,6 @@ thead th{border-top:0;background:var(--muted);font:600 14px var(--font-heading)}
 .md code{font:500 .92em ui-monospace,SFMono-Regular,Menlo,monospace;background:var(--muted);padding:1px 6px;border-radius:6px;word-break:break-word}
 .g-grid>*{min-width:0}@media(max-width:860px){.g-grid{grid-template-columns:minmax(0,1fr)}}
 .g-body{grid-template-columns:minmax(0,1fr)}
+.sec-h+.sec-d{margin:calc(clamp(28px,4vw,56px)*-1 + 14px) 0 clamp(28px,4vw,48px);color:var(--muted-foreground);font-size:clamp(16px,1.4vw,18px);max-width:48ch}
+.cta-d{color:#d6d6d6;font-size:clamp(16px,1.4vw,19px);margin:-12px 0 28px;max-width:40ch}
+@media(min-width:1100px){.cl-row{grid-template-columns:repeat(5,1fr)}}
