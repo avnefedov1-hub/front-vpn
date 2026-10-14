@@ -1,5 +1,5 @@
-# VPN NYC — design preview
+# VPN NYC — демо / demo
 
-Test deploy of the redesigned frontend. `data.js` holds a MOCK blob: dummy key, fake links (203.0.113.0/24 test-net, zero UUIDs). No real data.
+**RU.** Публичная демо-версия интерфейса с вымышленными данными: адреса из тестовой сети 203.0.113.0/24, нулевые идентификаторы, ненастоящие ключи. Тестовый ключ: `dummy-test-key`. Настоящий сервис находится в закрытом репозитории.
 
-Test key: `dummy-test-key`
+**EN.** Public demo of the interface with fake data (203.0.113.0/24 test-net addresses, zero IDs, fake keys). Test key: `dummy-test-key`. The real service lives in a private repository.
