@@ -294,3 +294,4 @@ th,td{text-align:left;padding:12px 14px;border-top:1px solid var(--border);verti
 thead th{border-top:0;background:var(--muted);font:600 14px var(--font-heading)}
 .md code{font:500 .92em ui-monospace,SFMono-Regular,Menlo,monospace;background:var(--muted);padding:1px 6px;border-radius:6px;word-break:break-word}
 .g-grid>*{min-width:0}@media(max-width:860px){.g-grid{grid-template-columns:minmax(0,1fr)}}
+.g-body{grid-template-columns:minmax(0,1fr)}
