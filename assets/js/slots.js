@@ -10,8 +10,10 @@ function dl(n,t){const a=document.createElement('a');a.href=URL.createObjectURL(
 const deep=x=>({'v2RayTun':'v2raytun://import/'+encodeURIComponent(x.link),'Hiddify':'hiddify://import/'+encodeURIComponent(x.link),'v2rayNG':'v2rayng://install-config?url='+encodeURIComponent(x.link)});
 const qd=$('qd');
 function render(s){const g=$('grid');g.innerHTML='';
+ const h1=document.querySelector('.dash-top h1'),sub=document.querySelector('.dash-top p');
+ if(s.length===1){h1.textContent='Ваш слот';sub.textContent='На телефоне нажмите «v2RayTun» — профиль добавится сам. На компьютере скопируйте ссылку.'}
  s.forEach((x,i)=>{const d=document.createElement('article');d.className='slot tac';d.setAttribute('aria-labelledby','sn'+i);
-  d.innerHTML=`<div class="slot-h"><h2 id="sn${i}"></h2><span class="n" aria-hidden="true">${i+1}</span></div>
+  d.innerHTML=`<div class="slot-h"><h2 id="sn${i}"></h2><span class="n" aria-hidden="true">${Number(x.n)}</span></div>
 <button class="qr" type="button" data-a="q"><img alt="" width="240" height="240" loading="lazy"></button>
 <div class="acts"><button class="btn btn-acc wide" type="button" data-a="l">${I.copy}Скопировать ссылку</button><button class="btn" type="button" data-a="s">${I.copy}Подписка</button><button class="btn" type="button" data-a="d">${I.dl}.txt</button></div>
 <div class="deep"></div>`;
